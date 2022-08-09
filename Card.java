@@ -15,24 +15,26 @@ public class Card {
     {
         color = col;
         this.type = type;
-
+        number = -1;
     }
 
     public Card(String type)
     {
         this.type = type;
+        color = "black";
+        number = -1;
     }
 
     public boolean isPlayable(Card other)
     {
-        if (color == other.getColor() || type == "add4" || type == "change" || number == other.getNumber())
+        if (color == other.getColor() || type == "+4" || type == "ChangeColor" || number == other.getNumber())
         {
             return true;
         }
         return false;
     }
     
-        public int getNumber()
+    public int getNumber()
     {
         return number;
     }
@@ -47,6 +49,11 @@ public class Card {
         return type;
     }
 
+    public void setColor(String color)
+    {
+        this.color = color;
+    }
+
     public String toString()
     {
         String s;
@@ -54,9 +61,9 @@ public class Card {
         {
             s = color + " " + number;
         }
-        else if (type == "powerUp")
+        else if (type == "Reverse" || type == "Skip" || type == "+2")
         {
-            s = type + " " + color; 
+            s = color + " " + type; 
         }
         else
         {
